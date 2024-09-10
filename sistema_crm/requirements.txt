@@ -1,0 +1,4 @@
+streamlit 
+pydantic[email] 
+psycopg2-binary 
+python-dotenv
