@@ -27,13 +27,13 @@ class Vendas(BaseModel):
 
     @validator('data')
     def validar_intervalo_data(cls, v):
-        # Define o intervalo de horas permitido no mesmo dia (ex: das 9h às 17h)
-        inicio_intervalo = datetime.combine(v.date(), time(9, 0))  # 09:00
-        fim_intervalo = datetime.combine(v.date(), time(17, 0))    # 17:00
+        # Define o intervalo de datas permitido
+        inicio_intervalo = datetime(2024, 9, 1)  # 01/09/2024
+        fim_intervalo = datetime(2024, 9, 12, 23, 59, 59)  # 12/09/2024 até 23:59:59
 
         # Verifica se a data está dentro do intervalo permitido
         if not (inicio_intervalo <= v <= fim_intervalo):
-            raise ValueError("A data deve estar dentro do intervalo de 09:00 às 17:00 no mesmo dia.")
+            raise ValueError("A data da venda deve estar entre 01/09/2024 e 12/09/2024.")
         return v
 
     @validator('produto')
